@@ -1,0 +1,29 @@
+name: compilador-c
+
+on:
+  push:
+    branches: [test]
+
+jobs:
+  compile-test-linux:
+    run-on: ubuntu-latest
+    steps:
+      - name: Descargar los archivos
+        uses: actions/checkout@v6
+
+      - name: Ejecuto el codigo
+        run: make
+
+      - name: Comprobar
+        run: ./conversor c2f 100
+
+  compile-test-mac:
+    run-on: macos-latest
+     steps:
+       - name: Descargar los archivos
+         uses: actions/checkout@v6
+
+       - name: Ejecuto el codigo
+         run: make
+       - name: Comprobar
+         run: ./conversor c2f 100
